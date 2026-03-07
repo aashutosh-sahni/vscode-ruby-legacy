@@ -1,52 +1,50 @@
-# VS Code Ruby Legacy Extension
+# VS Code Ruby Extension for Ruby 2.x (Legacy)
 
-The original VS Code Ruby extension by [rubyide](https://github.com/rubyide/vscode-ruby) was deprecated in favor of [Shopify's Ruby LSP](https://github.com/Shopify/ruby-lsp). However, Ruby LSP requires **Ruby 3.0+**, which doesn't work for legacy projects on older Ruby versions.
+[![VS Code](https://img.shields.io/badge/VS%20Code-Extension-blue)](https://code.visualstudio.com/)
+[![Ruby](https://img.shields.io/badge/Ruby-2.x%20%7C%203.x-red)](https://www.ruby-lang.org/)
 
-This repo provides an easy way to install the **last working version (v0.28.1)** of the original extension, which works with **any Ruby version** including Ruby 2.x.
+**Go to Definition, IntelliSense, and Symbol Search for Ruby in VS Code — works with Ruby 2.x projects where Ruby LSP fails.**
 
-## Features
+## The Problem
 
-- **Go to Definition** - `Cmd+Click` or `F12` on methods, classes, modules
-- **Workspace Symbol Search** - `Cmd+T` to search for symbols
-- **Document Symbols** - `Cmd+Shift+O` for outline view
-- Works with **Ruby 2.x** projects (no Ruby 3.0+ requirement)
-- Pure JavaScript parser - no gem dependencies
+- **Shopify's Ruby LSP** requires Ruby 3.0+ and doesn't work with legacy Ruby 2.x projects
+- **Solargraph** has complex gem dependencies that often conflict with older Rails apps
+- The **original VS Code Ruby extension** was deprecated, but it still works great
+
+## The Solution
+
+This repo provides an easy installer for the **last working version (v0.28.1)** of the original Ruby extension, which:
+
+- Works with **Ruby 1.9, 2.0, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 3.x** — any version
+- Has **zero gem dependencies** — uses a pure JavaScript parser
+- Provides **Go to Definition** (`Cmd+Click` / `F12`)
+- Provides **Symbol Search** (`Cmd+T`)
+- Provides **Document Outline** (`Cmd+Shift+O`)
 
 ## Installation
 
-### Option 1: Automated (Recommended)
-
-Run this in your terminal:
+### One-Line Install (macOS/Linux)
 
 ```bash
 curl -sSL https://raw.githubusercontent.com/aashutosh-sahni/vscode-ruby-legacy/main/install.sh | bash
 ```
 
-This script will:
-1. Download the extension (tries VS Code Marketplace first, falls back to GitHub mirror)
-2. Extract and install it to VS Code
-3. Print the configuration steps
-
-### Option 2: Manual
-
-If you prefer to do it yourself:
+### Manual Install
 
 ```bash
-# Download from this repo (backup mirror)
+# Download
 curl -L "https://github.com/aashutosh-sahni/vscode-ruby-legacy/raw/main/ruby-0.28.1.vsix.gz" -o /tmp/ruby-legacy.vsix.gz
 
-# Extract (it's gzipped)
+# Extract
 gunzip /tmp/ruby-legacy.vsix.gz
 
 # Install
 code --install-extension /tmp/ruby-legacy.vsix
 ```
 
-> **Note:** This repo includes a backup copy of the extension (`ruby-0.28.1.vsix.gz`) in case Microsoft removes it from the marketplace.
-
 ## Configuration
 
-After installation, add this to your VS Code settings (`Cmd+,` → "Open Settings (JSON)"):
+Add to your VS Code `settings.json`:
 
 ```json
 {
@@ -54,30 +52,19 @@ After installation, add this to your VS Code settings (`Cmd+,` → "Open Setting
 }
 ```
 
-Then reload VS Code and run:
-- `Cmd+Shift+P` → **"Ruby: Reload Project"**
+Then: `Cmd+Shift+P` → **"Ruby: Reload Project"** to index your files.
 
-This will index your Ruby files for Go to Definition.
+## Common Issues
 
-## Settings
+### "Go to Definition not working"
 
-| Setting | Description | Default |
-|---------|-------------|---------|
-| `ruby.intellisense` | Set to `rubyLocate` to enable Go to Definition | `""` |
-| `ruby.locate.include` | Glob pattern for files to index | `**/*.rb` |
-| `ruby.locate.exclude` | Glob pattern for files to exclude | `{vendor,node_modules}/**` |
+1. Ensure `"ruby.intellisense": "rubyLocate"` is in your settings
+2. Run `Cmd+Shift+P` → "Ruby: Reload Project"
+3. Check Output panel → "Ruby" for errors
 
-## Troubleshooting
+### "Conflicts with Ruby LSP / Shopify extension"
 
-### Go to Definition not working?
-
-1. Make sure `ruby.intellisense` is set to `rubyLocate`
-2. Run `Cmd+Shift+P` → "Ruby: Reload Project" to re-index
-3. Check the Output panel (`Cmd+Shift+U`) → select "Ruby" for errors
-
-### Conflicts with Ruby LSP?
-
-If you have Shopify's Ruby LSP installed, you may want to disable it for workspaces using this extension:
+Disable Ruby LSP for your workspace:
 
 ```json
 {
@@ -85,18 +72,28 @@ If you have Shopify's Ruby LSP installed, you may want to disable it for workspa
 }
 ```
 
-## Why this exists
+### "Extension not found in marketplace"
 
-- Ruby LSP requires Ruby 3.0+
-- Solargraph has complex gem dependencies that conflict with older projects
-- This extension uses a pure JavaScript parser (`ruby-method-locate`) with zero Ruby dependencies
-- It just works
+The extension was deprecated. That's why this repo exists — we host a backup copy.
+
+## Alternatives Comparison
+
+| Extension | Ruby Version | Gem Dependencies | Status |
+|-----------|--------------|------------------|--------|
+| **This (Legacy)** | Any (2.x, 3.x) | None | Works |
+| Ruby LSP (Shopify) | 3.0+ only | ruby-lsp gem | Active |
+| Solargraph | 2.4+ | solargraph gem | Active |
+| vscode-ruby (original) | Any | None | Deprecated |
+
+## Keywords
+
+`vscode ruby extension`, `ruby go to definition`, `vscode ruby 2`, `ruby intellisense`, `vscode ruby legacy`, `ruby lsp alternative`, `vscode ruby not working`, `ruby extension deprecated`, `vscode ruby old version`, `rails vscode extension`
 
 ## Credits
 
-- Original extension: [rubyide/vscode-ruby](https://github.com/rubyide/vscode-ruby)
-- Maintainers: Peng Lv, Stafford Brunk, and contributors
+- Original: [rubyide/vscode-ruby](https://github.com/rubyide/vscode-ruby)
+- Maintainers: Peng Lv, Stafford Brunk
 
 ## License
 
-MIT (same as original)
+MIT
