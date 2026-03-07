@@ -14,13 +14,22 @@ This repo provides an easy way to install the **last working version (v0.28.1)**
 
 ## Installation
 
-### Option 1: One-liner (macOS/Linux)
+### Option 1: Automated (Recommended)
+
+Run this in your terminal:
 
 ```bash
 curl -sSL https://raw.githubusercontent.com/aashutosh-sahni/vscode-ruby-legacy/main/install.sh | bash
 ```
 
+This script will:
+1. Download the extension (tries VS Code Marketplace first, falls back to GitHub mirror)
+2. Extract and install it to VS Code
+3. Print the configuration steps
+
 ### Option 2: Manual
+
+If you prefer to do it yourself:
 
 ```bash
 # Download from this repo (backup mirror)
