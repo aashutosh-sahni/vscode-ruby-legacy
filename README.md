@@ -23,8 +23,8 @@ curl -sSL https://raw.githubusercontent.com/aashutosh-sahni/vscode-ruby-legacy/m
 ### Option 2: Manual
 
 ```bash
-# Download the extension
-curl -L "https://marketplace.visualstudio.com/_apis/public/gallery/publishers/rebornix/vsextensions/Ruby/0.28.1/vspackage" -o /tmp/ruby-legacy.vsix.gz
+# Download from this repo (backup mirror)
+curl -L "https://github.com/aashutosh-sahni/vscode-ruby-legacy/raw/main/ruby-0.28.1.vsix.gz" -o /tmp/ruby-legacy.vsix.gz
 
 # Extract (it's gzipped)
 gunzip /tmp/ruby-legacy.vsix.gz
@@ -32,6 +32,8 @@ gunzip /tmp/ruby-legacy.vsix.gz
 # Install
 code --install-extension /tmp/ruby-legacy.vsix
 ```
+
+> **Note:** This repo includes a backup copy of the extension (`ruby-0.28.1.vsix.gz`) in case Microsoft removes it from the marketplace.
 
 ## Configuration
 
