@@ -1,9 +1,10 @@
 # VS Code Ruby Extension for Ruby 2.x (Legacy)
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-Extension-blue)](https://code.visualstudio.com/)
+[![Cursor](https://img.shields.io/badge/Cursor-Compatible-green)](https://cursor.sh/)
 [![Ruby](https://img.shields.io/badge/Ruby-2.x%20%7C%203.x-red)](https://www.ruby-lang.org/)
 
-**Go to Definition, IntelliSense, and Symbol Search for Ruby in VS Code — works with Ruby 2.x projects where Ruby LSP fails.**
+**Go to Definition, IntelliSense, and Symbol Search for Ruby in VS Code & Cursor — works with Ruby 2.x projects where Ruby LSP fails.**
 
 ## The Problem
 
@@ -17,28 +18,32 @@ This repo provides an easy installer for the **last working version (v0.28.1)** 
 
 - Works with **Ruby 1.9, 2.0, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 3.x** — any version
 - Has **zero gem dependencies** — uses a pure JavaScript parser
-- Provides **Go to Definition** (`Cmd+Click` / `F12`)
-- Provides **Symbol Search** (`Cmd+T`)
-- Provides **Document Outline** (`Cmd+Shift+O`)
+- Provides **Go to Definition** (`Cmd/Ctrl+Click` or `F12`)
+- Provides **Symbol Search** (`Cmd/Ctrl+T`)
+- Provides **Document Outline** (`Cmd/Ctrl+Shift+O`)
 
 ## Installation
 
-### One-Line Install (macOS/Linux)
+### VS Code
 
 ```bash
 curl -sSL https://raw.githubusercontent.com/aashutosh-sahni/vscode-ruby-legacy/main/install.sh | bash
 ```
 
+### Cursor
+
+```bash
+curl -sSL https://raw.githubusercontent.com/aashutosh-sahni/vscode-ruby-legacy/main/install.sh | bash -s cursor
+```
+
 ### Manual Install
 
 ```bash
-# Download
+# Download & extract
 curl -L "https://github.com/aashutosh-sahni/vscode-ruby-legacy/raw/main/ruby-0.28.1.vsix.gz" -o /tmp/ruby-legacy.vsix.gz
-
-# Extract
 gunzip /tmp/ruby-legacy.vsix.gz
 
-# Install
+# Install (use 'cursor' instead of 'code' for Cursor)
 code --install-extension /tmp/ruby-legacy.vsix
 ```
 
@@ -52,14 +57,14 @@ Add to your VS Code `settings.json`:
 }
 ```
 
-Then: `Cmd+Shift+P` → **"Ruby: Reload Project"** to index your files.
+Then: `Cmd/Ctrl+Shift+P` → **"Ruby: Reload Project"** to index your files.
 
 ## Common Issues
 
 ### "Go to Definition not working"
 
 1. Ensure `"ruby.intellisense": "rubyLocate"` is in your settings
-2. Run `Cmd+Shift+P` → "Ruby: Reload Project"
+2. Run `Cmd/Ctrl+Shift+P` → "Ruby: Reload Project"
 3. Check Output panel → "Ruby" for errors
 
 ### "Conflicts with Ruby LSP / Shopify extension"
@@ -84,10 +89,6 @@ The extension was deprecated. That's why this repo exists — we host a backup c
 | Ruby LSP (Shopify) | 3.0+ only | ruby-lsp gem | Active |
 | Solargraph | 2.4+ | solargraph gem | Active |
 | vscode-ruby (original) | Any | None | Deprecated |
-
-## Keywords
-
-`vscode ruby extension`, `ruby go to definition`, `vscode ruby 2`, `ruby intellisense`, `vscode ruby legacy`, `ruby lsp alternative`, `vscode ruby not working`, `ruby extension deprecated`, `vscode ruby old version`, `rails vscode extension`
 
 ## Credits
 

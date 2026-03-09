@@ -1,7 +1,16 @@
 #!/bin/bash
 set -e
 
-echo "Installing VS Code Ruby Legacy Extension (v0.28.1)..."
+EDITOR_CMD="${1:-code}"
+
+if [[ "$EDITOR_CMD" != "code" && "$EDITOR_CMD" != "cursor" ]]; then
+  echo "Usage: install.sh [code|cursor]"
+  echo "  code   - Install for VS Code (default)"
+  echo "  cursor - Install for Cursor"
+  exit 1
+fi
+
+echo "Installing Ruby Legacy Extension (v0.28.1) for $EDITOR_CMD..."
 
 MARKETPLACE_URL="https://marketplace.visualstudio.com/_apis/public/gallery/publishers/rebornix/vsextensions/Ruby/0.28.1/vspackage"
 GITHUB_URL="https://github.com/aashutosh-sahni/vscode-ruby-legacy/raw/main/ruby-0.28.1.vsix.gz"
@@ -21,16 +30,16 @@ gunzip -f /tmp/ruby-legacy.vsix.gz
 
 # Install
 echo "Installing..."
-code --install-extension /tmp/ruby-legacy.vsix
+$EDITOR_CMD --install-extension /tmp/ruby-legacy.vsix
 
 # Cleanup
 rm -f /tmp/ruby-legacy.vsix
 
 echo ""
 echo "Done! Now:"
-echo "1. Add to your VS Code settings.json:"
+echo "1. Add to your settings.json:"
 echo '   "ruby.intellisense": "rubyLocate"'
 echo ""
-echo "2. Reload VS Code"
+echo "2. Reload $EDITOR_CMD"
 echo ""
-echo "3. Run: Cmd+Shift+P → 'Ruby: Reload Project'"
+echo "3. Run: Cmd/Ctrl+Shift+P → 'Ruby: Reload Project'"
